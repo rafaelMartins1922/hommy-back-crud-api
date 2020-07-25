@@ -77,3 +77,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+API para implementação de CRUD para tabelas de Usuário e República da aplicação Hommy. O Hommy é um projeto desenvolvido durante o treinamento técnico da EJCM da UFRJ com foco em aluguel de repúblicas estudantis.
