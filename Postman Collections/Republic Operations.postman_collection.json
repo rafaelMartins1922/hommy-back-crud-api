@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "33947606-610e-4299-85eb-9e858e9d7a45",
+		"name": "Republic Operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Republic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "República 1",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Rio de Janeiro",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "RJ",
+							"type": "text"
+						},
+						{
+							"key": "street",
+							"value": "Av.Brasilfs",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "2688",
+							"type": "text"
+						},
+						{
+							"key": "complement",
+							"value": "fdgifdhguownd dfuighafu",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "550",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/createRepublic",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"createRepublic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Republic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/showRepublic/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showRepublic",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Republic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/listRepublic",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"listRepublic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Republic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/deleteRepublic/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteRepublic",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Republic",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "la republica",
+							"type": "text"
+						},
+						{
+							"key": "street",
+							"value": "32987",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/updateRepublic/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateRepublic",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User Relation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/addUser/2/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addUser",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover User Relation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/removeUser/2/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"removeUser",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
