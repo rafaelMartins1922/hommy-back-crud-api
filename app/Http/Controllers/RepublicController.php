@@ -1,5 +1,7 @@
 <?php
-
+/*
+    Controller de Repúblicas     
+*/
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,6 +9,9 @@ use App\User;
 use App\Republic;
 class RepublicController extends Controller
 {
+    /*
+        Criar tabela
+    */
     public function createRepublic(Request $request){
         $republic = new Republic;
         $republic->name = $request->name;
@@ -34,15 +39,26 @@ class RepublicController extends Controller
         return response()->json($republic);
     }
 
+    /*
+        buscar república por id
+    */
     public function showRepublic($id){
         $republic = Republic::findOrFail($id);
         return response()->json($republic);
     }
 
+    /*
+        Listar todas as repúblicas
+    */
+
     public function listRepublic(){
         $republic = Republic::all();
         return response()->json([$republic]);
     }
+
+    /*
+        Alterar república
+    */
 
     public function updateRepublic(Request $request,$id){
         $republic = Republic::findOrFail($id);
@@ -107,11 +123,17 @@ class RepublicController extends Controller
         return response()->json($republic);
     }
 
+    /*
+        Excluir república
+    */
     public function deleteRepublic($id){
         Republic::destroy($id);
         return response()->json(["República deletada."]);
     }
 
+    /*
+        Adicionar id do usuário criador da república
+    */
     public function addUser($id, $user_id){
         $republic = Republic::findOrFail($id);
         $user = User::findOrFail($user_id);
@@ -120,6 +142,10 @@ class RepublicController extends Controller
         return response()->json($republic);
     }
 
+    /*
+        Remover id do usuário que criou a repúblca
+    */
+    
     public function removeUser($id,$user_id){
         $republic = Republic::findOrFail($id);
         $user = User::findOrFail($user_id);

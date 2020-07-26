@@ -6,11 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRepublicsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    /* 
+        Criação da tabela de Repúblicas
+    */
     public function up()
     {
         Schema::create('republics', function (Blueprint $table) {
@@ -41,17 +39,15 @@ class CreateRepublicsTable extends Migration
             $table->unsignedBigInteger("user_id")->nullable();
             
         });
-
+        /* 
+            Adição de id do usuário que criou a república
+        */
         Schema::table('republics',function (Blueprint $table){
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');
         }); 
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    //Exclusão da tabela de repúblicas
     public function down()
     {
         Schema::dropIfExists('republics');

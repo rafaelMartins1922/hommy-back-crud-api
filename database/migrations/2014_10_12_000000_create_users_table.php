@@ -6,11 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    /* 
+        Criação da tebela de usuários
+    */
 
     public function up()
     {
@@ -27,11 +25,9 @@ class CreateUsersTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   /*
+    Exclusão da tabela de usuários
+   */
     public function down()
     {
         Schema::dropIfExists('users');

@@ -7,7 +7,9 @@ use App\Republic;
 use App\User;
 class UserController extends Controller
 {
-
+    /*
+        Criar usuário
+    */
     public function createUser(Request $request){
         $user = new User;
         $user->name = $request->name;
@@ -21,15 +23,27 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    /*
+        Buscar usuario por id
+    */
+
     public function showUser($id){
         $user = User::findOrFail($id);
         return response()->json($user);
     }
 
+    /*
+        Listar usuários
+    */
+
     public function listUser(){
         $user = User::all();
         return response()->json($user);
     }
+
+    /*
+        Alterar usuário
+    */
 
     public function updateUser(Request $request,$id){
         $user = User::findOrFail($id);
@@ -55,11 +69,17 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    /*
+        Deletar usuário
+    */
+
     public function deleteUser($id){
         User::destroy($id);
         return response()->json(["Usuário deletado."]);
     }
-
+    /*
+        Relacionar república com usuário (caso a relação 'usuário mora em república' seja implementada)
+    */
     public function addRepublic($id,$republic_id){
         $user = User::findOrFail($id);
         $republic = Republic::findOrFail($republic_id);
@@ -67,6 +87,10 @@ class UserController extends Controller
         $user->save();
         return response()->json($user);
     }
+
+    /*
+        Remover relação de república com usuário (caso a relação 'usuário mora em república' seja implementada)
+    */
 
     public function removeRepublic($id,$republic_id){
         $user = User::findOrFail($id);
