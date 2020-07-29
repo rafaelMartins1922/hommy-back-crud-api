@@ -96,21 +96,21 @@ class Republic extends Model{
     }
 
     /*
-       Associar entidade República com Usuário (relação 'usuário aluga república')
+       1-1 Associar entidade República com Usuário (relação 'usuário aluga república')
     */
     public function userLocatario(){
         return $this->hasMany("App\User");
     }
 
     /*
-       Associar entidade República com Usuário (relação 'usuário anuncia república')
+       1-N Associar entidade República com Usuário (relação 'usuário anuncia república')
     */
     public function user(){
         return $this->belongsTo('App\User');
     }    
 
     /*
-       Associar entidade República com Usuário (relação 'usuário favorita república')
+      N-N Associar entidade República com Usuário (relação 'usuário favorita república')
     */
     public function userFavoritas(){
         return $this->belongsToMany('App\User');

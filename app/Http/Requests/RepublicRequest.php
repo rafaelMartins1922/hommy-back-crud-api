@@ -85,7 +85,9 @@ class RepublicRequest extends FormRequest
             ];
         }
         
-        if($this->isMethod('get')){}
+        if($this->isMethod('get')){
+            return [];
+        }
         
         if($this->isMethod('delete')){}
     }

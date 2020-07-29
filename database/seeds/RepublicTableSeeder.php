@@ -11,6 +11,6 @@ class RepublicTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory (App\Republic::class,3)->create();
     }
 }

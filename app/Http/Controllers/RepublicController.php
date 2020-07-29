@@ -35,9 +35,17 @@ class RepublicController extends Controller
         Listar todas as repúblicas
     */
 
-    public function listRepublic(){
-        $republic = Republic::all();
-        return response()->json([$republic]);
+    public function listRepublic(RepublicRequest $request){
+        $queryRepublic = Republic::query();
+        if($request->likes){
+            $queryRepublic->where('likes','>=',$request->likes);
+        }
+        if($request->price){
+            $queryRepublic->where('price','>=',$request->price);
+            console.log('tem price');
+        }
+        $search = $queryRepublic->get();
+        return response()->json($search);
     }
 
     /*
@@ -58,6 +66,8 @@ class RepublicController extends Controller
         return response()->json(["República deletada."]);
     }
 
+    /* 1-1 Busca locatario da república (relação usuário anuncia república) */
+
     public function locatario($id){
         $republic = Republic::findOrFail($id);
         $locatarios = $republic->userLocatario;
@@ -67,6 +77,6 @@ class RepublicController extends Controller
     public function locador($id){
         $republic = Republic::findOrFail($id);
         return response()->json($republic->user);
-    }   
+    }
 
 }

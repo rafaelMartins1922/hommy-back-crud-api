@@ -101,7 +101,7 @@ class User extends Authenticatable
     }      
 
      /*
-       Associar chave de república com usuário (relação 'usuário gerencia república')
+       Associar chave de república com usuário (relação 'usuário aluga república')
     */
     public function alugar($republic_id){
         $this->republic_id = $republic_id;
