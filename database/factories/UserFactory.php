@@ -25,6 +25,6 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => $faker->e164PhoneNumber,
         'remember_token' => Str::random(10),
         'birth_date' =>$faker->date,
-        'descricao' => $faker->asciify('********************')
+        'description' => $faker->asciify('********************')
     ];
 });

@@ -12,6 +12,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -49,7 +50,7 @@ class User extends Authenticatable
         $this->password = bcrypt($request->password);
         $this->phone = $request->phone;
         $this->birth_date = $request->birth_date;
-        $this->descricao = $request->descricao;
+        $this->description = $request->descricao;
 
         $this->save();
     }

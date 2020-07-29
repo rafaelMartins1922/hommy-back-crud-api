@@ -35,9 +35,9 @@ class UserRequest extends FormRequest
                 'name' => 'required|string|alpha',
                 'email' => 'required|email|Unique:Users,email',
                 'password' => 'required',
-                'phone' => 'required|telefone',
+                'phone' => 'nullable|telefone',
                 'birth_date' => 'nullable|date_format:d/m/Y',
-                'descricao' => 'nullable|string',
+                'description' => 'nullable|string',
                 'cpf' => 'formato_cpf',
                 'cnpj' => 'cnpj'
             ];
@@ -47,7 +47,7 @@ class UserRequest extends FormRequest
                 'name' => 'string|alpha',
                 'email' => 'email|Unique:Users,email',
                 'password' => 'nullable',
-                'phone' => 'telefone',
+                'phone' => 'nullbale|telefone',
                 'birth_date' => 'nullable|date_format:d/m/Y',
                 'descricao' => 'nullable|string',
                 'cpf' => 'formato_cpf',

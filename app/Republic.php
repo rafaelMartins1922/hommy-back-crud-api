@@ -5,7 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Http\Requests\RepublicRequest;
+
+Use Illuminate\Database\Eloquent\SoftDeletes;
 class Republic extends Model{
+    //Implementa SoftDeletes
+    use SoftDeletes;
+
+    //Cria uma república
     public function createRepublic(RepublicRequest $request){
         $this->name = $request->name;
         $this->city = $request->city;
@@ -31,7 +37,7 @@ class Republic extends Model{
     }
 
     /*
-        Alterar república
+        Altera república
     */
 
     public function updateRepublic(RepublicRequest $request){
@@ -116,6 +122,7 @@ class Republic extends Model{
         return $this->belongsToMany('App\User');
     }
 
+    //Seta user_id de República (id do locatário)
     public function anunciar($user_id){
         $user = User::findOrFail($user_id);
         $this->user_id = $user_id;

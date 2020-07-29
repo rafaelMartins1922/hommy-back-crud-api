@@ -40,11 +40,17 @@ class CreateRepublicsTable extends Migration
             
         });
         /* 
-            Adição de id do usuário que criou a república
+            Adição de id do usuário que criou a república (locatário)
         */
         Schema::table('republics',function (Blueprint $table){
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');
         }); 
+
+        //Implementa SoftDeletes
+        Schema::table('republics', function (Blueprint $table) {
+            $table->softDeletes();
+        });
+        
     }
 
     //Exclusão da tabela de repúblicas

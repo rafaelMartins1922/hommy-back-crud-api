@@ -4,7 +4,6 @@
 */
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Republic;
 use Illuminate\Support\Facades\Validator;
@@ -42,7 +41,6 @@ class RepublicController extends Controller
         }
         if($request->price){
             $queryRepublic->where('price','>=',$request->price);
-            console.log('tem price');
         }
         $search = $queryRepublic->get();
         return response()->json($search);
@@ -77,6 +75,10 @@ class RepublicController extends Controller
     public function locador($id){
         $republic = Republic::findOrFail($id);
         return response()->json($republic->user);
+    }
+
+    public function getDeleted(){
+        return response()->json(Republic::onlyTrashed()->get());
     }
 
 }

@@ -34,7 +34,9 @@ Route::put('updateUser/{id}','UserController@updateUser');
 Route::delete('deleteUser/{id}','UserController@deleteUser');
 
 Route::put('anunciar/{us_id}/{rep_id}',"UserController@anunciar");
-//Exercicio Models II
+
+//MODELS II
+//Exercícios
 //Q1
 Route::get('buscarRepublicaAlugada/{us_id}',"UserController@buscaRepublicaAlugada"); //c
 Route::get('buscarRepublicaAnunciada/{us_id}',"UserController@buscaRepublicasAnunciadas"); //c
@@ -52,12 +54,16 @@ Route::get('favoritas/{user_id}',"UserController@favoritas");//c
 //Q7
 Route::put('comentarios/{rep_id}',"RepublicController@comentarios");
 
+//PASSPORT & SEEDERS
 Route::post('register','API\PassportController@register');
 Route::post('login','API\PassportController@login');
 Route::group(['middleware' => 'auth:api'],function(){
 	Route::get('logout','API\PassportController@logout');
 	Route::post('getDetails','API\PassportController@getDetails');
 });
+
+//ELOQUENT I
+Route::get('getDeletedRepublics',"RepublicController@getDeleted");//c
 
 
 

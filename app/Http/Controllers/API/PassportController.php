@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use Auth;
+use DB;
 class PassportController extends Controller
 {
     public function register(UserRequest $request){
@@ -25,7 +27,7 @@ class PassportController extends Controller
     }
     
     public function login(){
-        if(Auth::atempt(['email' => request('email'),'password' => request('password')])){
+        if(Auth::attempt(['email' => request('email'),'password' => request('password')])){
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->accessToken;
             return response()->json(['success' => $success, 'user' => $user],200);
@@ -36,14 +38,13 @@ class PassportController extends Controller
     
     public function getDetails(){
         $user = Auth::user();
-        return response()->json(['success => $user'],200);
+        return response()->json(['success' => $user],200);
     }
     
     public function logout(){
         $accessToken = Auth::user()->token();
-        DB::table('oauth_refresh_tokens')->where('access_token_id',$accessToken->id)->update(['revoked' -> true]);
+        DB::table('oauth_refresh_tokens')->where('access_token_id',$accessToken->id)->update(['revoked' => true]);
         $accessToken->revoke();
-        return response()->json(['Usuário Deslogado'],204);
+        return response()->json(['Usuário Deslogado'],200);
     }
-    
 }
