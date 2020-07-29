@@ -5,21 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Republic;
 use App\User;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
     /*
         Criar usuário
     */
-    public function createUser(Request $request){
+    public function createUser(UserRequest $request){
         $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->phone = $request->phone;
-        $user->birth_date = $request->birth_date;
-        $user->descricao = $request->descricao;
-
-        $user->save();
+        $user->createUser($request);
         return response()->json($user);
     }
 
@@ -45,58 +40,71 @@ class UserController extends Controller
         Alterar usuário
     */
 
-    public function updateUser(Request $request,$id){
+    public function updateUser(UserRequest $request,$id){
         $user = User::findOrFail($id);
-        if($request->name){
-            $user->name = $request->name;
-        }
-        if($request->email){
-            $user->email = $request->email;
-        }
-        if($request->password){
-            $user->password = $request->password;
-        }
-        if($request->phone){
-            $user->phone = $request->phone;
-        }
-        if($request->date){
-            $user->birth_date = $request->birth_date;
-        }
-        if($request->descricao){
-            $user->descricao = $request->descricao;
-        }
-        $user->save();
+        $user->updateUser($request);
         return response()->json($user);
     }
-
+    
     /*
         Deletar usuário
     */
-
     public function deleteUser($id){
         User::destroy($id);
         return response()->json(["Usuário deletado."]);
     }
+
     /*
         Relacionar república com usuário (caso a relação 'usuário mora em república' seja implementada)
     */
-    public function addRepublic($id,$republic_id){
-        $user = User::findOrFail($id);
-        $republic = Republic::findOrFail($republic_id);
-        $user->$republic_id = $republic_id;
-        $user->save();
+    public function alugar($user_id,$republic_id){
+        $user = User::findOrFail($user_id);
+        $user-> alugar($republic_id);
         return response()->json($user);
     }
 
-    /*
-        Remover relação de república com usuário (caso a relação 'usuário mora em república' seja implementada)
-    */
+    public function desocupar($user_id){
+        $user = User::findOrFail($user_id);
+        $user-> desocupar();
+        return response()->json("Um locatário deixou a república!");
+    }
 
-    public function removeRepublic($id,$republic_id){
-        $user = User::findOrFail($id);
+    public function anunciar($user_id,$republic_id){
         $republic = Republic::findOrFail($republic_id);
-        $user->republic_id = NULL;
-        $user->save();
-        return response()->json($user);
+        $republic-> anunciar($user_id);
+        return response()->json($republic);
+    }
+
+    public function favoritar($user_id,$republic_id){
+        $user = User::findOrFail($user_id);
+        $user->favoritas()->attach($republic_id);
+        return response()->json('Adionada aos favoritos.');
+    }
+
+    public function favoritas($user_id){
+        $user = User::findOrFail($user_id);
+        $favoritas=$user->favoritas;
+        return response()->json($favoritas);
+    }
+
+    public function buscaRepublicaAlugada($user_id){
+        $user = User::findOrFail($user_id);
+        $republic = $user->republic;
+        return response()->json($republic);
+    }
+
+    /*
+       Busca repúblicas anunciadas por um usuário
+    */
+    public function buscaRepublicasAnunciadas(){
+        $user = User::findOrFail($user_id);
+        $republic = $user->republics;
+        return response()->json($user->buscaRepublicasAnunciadas);
+    }
+
+    public function buscaFavoritos($user_id){
+        $user = User::findOrFail($user_id);
+        $favoritas = $user->favoritas;
+        return response()->json($favoritas);
     }
 }
