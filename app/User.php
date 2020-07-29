@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Republic;
 use App\Http\Requests\UserRequest;
+use Laravel\Passport\HasApiTokens;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -44,7 +46,7 @@ class User extends Authenticatable
     public function createUser(UserRequest $request){
         $this->name = $request->name;
         $this->email = $request->email;
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
         $this->phone = $request->phone;
         $this->birth_date = $request->birth_date;
         $this->descricao = $request->descricao;
@@ -63,7 +65,7 @@ class User extends Authenticatable
             $this->email = $request->email;
         }
         if($request->password){
-            $this->password = $request->password;
+            $this->password = bcrypt($request->password);
         }
         if($request->phone){
             $this->phone = $request->phone;
