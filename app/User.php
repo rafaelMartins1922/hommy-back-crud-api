@@ -81,14 +81,14 @@ class User extends Authenticatable
     }
     
      /*
-       Associar entidade República com Usuário (relação 'usuário aluga república')
+       Associar entidade República com Usuário (relação 'usuário mora em república')
     */
     public function republic(){
         return $this->belongsTo('App\Republic');
     }
 
     /*
-       Associar entidade República com Usuário (relação 'usuário anuncia república')
+       Associar entidade República com Usuário (relação 'usuário cria/gerencia em república')
     */
     public function republics(){
         return $this->hasMany('App\Republic');
@@ -99,21 +99,28 @@ class User extends Authenticatable
     */
     public function favoritas(){
         return $this->belongsToMany('App\Republic');
-    }      
+    }    
+    
+    //Instancia a Model de Usuário de participa do relacionamento 'usuário faz comentário'
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
 
      /*
-       Associar chave de república com usuário (relação 'usuário aluga república')
+       Associar chave de república com usuário (relação 'usuário mora em república')
     */
     public function alugar($republic_id){
         $this->republic_id = $republic_id;
         $this->save();
     }
 
+    //Desassocia chave de república do usuário que antes vivia nela
     public function desocupar(){
         $this->republic_id = NULL;
         $this->save();
     }
 
+    //Cria relação de favoritos entre um usuário e uma república
     public function favoritar($user_id,$republic_id){
         $user = User::findOrFail($user_id);
         $republic = Republic::findOrFail($republic_id);

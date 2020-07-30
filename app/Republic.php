@@ -102,14 +102,14 @@ class Republic extends Model{
     }
 
     /*
-       1-1 Associar entidade República com Usuário (relação 'usuário aluga república')
+       1-N Associar entidade República com Usuário (relação 'usuário cria/gerencia república')
     */
     public function userLocatario(){
         return $this->hasMany("App\User");
     }
 
     /*
-       1-N Associar entidade República com Usuário (relação 'usuário anuncia república')
+       1-N Associar entidade República com Usuário (relação 'usuário anuncia/cria/gerencia república')
     */
     public function user(){
         return $this->belongsTo('App\User');
@@ -120,6 +120,11 @@ class Republic extends Model{
     */
     public function userFavoritas(){
         return $this->belongsToMany('App\User');
+    }
+
+    //Instancia a Model de Comentário que participa do relacionamento 'comentário refere-se a república'
+    public function comments(){
+        return $this->hasMany('App\Comment');
     }
 
     //Seta user_id de República (id do locatário)

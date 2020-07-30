@@ -55,7 +55,7 @@ class UserController extends Controller
     }
 
     /*
-        Relacionar república com usuário (caso a relação 'usuário mora em república' seja implementada)
+        Relacionar república com usuário (caso a relação 'usuário aluga república' seja implementada)
     */
     public function alugar($user_id,$republic_id){
         $user = User::findOrFail($user_id);
@@ -63,30 +63,37 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    //Desassocia chave de república do usuário que antes vivia nela
     public function desocupar($user_id){
         $user = User::findOrFail($user_id);
         $user-> desocupar();
         return response()->json("Um locatário deixou a república!");
     }
 
+    //Associa um usuário como anunciante de uma república
     public function anunciar($user_id,$republic_id){
         $republic = Republic::findOrFail($republic_id);
         $republic-> anunciar($user_id);
         return response()->json($republic);
     }
 
+    //Cria relação de favoritos entre um usuário e uma república
     public function favoritar($user_id,$republic_id){
         $user = User::findOrFail($user_id);
+        $republic = Republic::findOrFail($republic_id);
+        $republic->userFavoritas()->attach($user_id);
         $user->favoritas()->attach($republic_id);
         return response()->json('Adionada aos favoritos.');
     }
-
+    
+    //Recupera as repúblicas favoritas de um usuário
     public function favoritas($user_id){
         $user = User::findOrFail($user_id);
         $favoritas=$user->favoritas;
         return response()->json($favoritas);
     }
 
+    //Recupera a república em que o usuário vive
     public function buscaRepublicaAlugada($user_id){
         $user = User::findOrFail($user_id);
         $republic = $user->republic;
@@ -102,9 +109,10 @@ class UserController extends Controller
         return response()->json($user->buscaRepublicasAnunciadas);
     }
 
-    public function buscaFavoritos($user_id){
-        $user = User::findOrFail($user_id);
-        $favoritas = $user->favoritas;
-        return response()->json($favoritas);
+    //Estabelece o relacionamento entre usuário e comentário feito por eles
+    public function fazComentario($user_id,$comment_id){
+        $comment = Comment::findOrFail($comment_id);
+        $comment->fazComentario($user_id);
+        return response()->json($comment);
     }
 }

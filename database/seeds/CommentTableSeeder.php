@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-class RepublicTableSeeder extends Seeder
+use App\Comment;
+class CommentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,6 @@ class RepublicTableSeeder extends Seeder
      */
     public function run()
     {
-        factory (App\Republic::class,12)->create();
-        
-        
+        factory (App\Comment::class,5)->create();
     }
 }

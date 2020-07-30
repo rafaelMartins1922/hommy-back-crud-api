@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Republic;
+use App\Comment;
 use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests\RepublicRequest;
@@ -72,13 +73,23 @@ class RepublicController extends Controller
         return response()->json($locatarios);
     }
 
+    //Recupera o locador de uma república
     public function locador($id){
         $republic = Republic::findOrFail($id);
         return response()->json($republic->user);
     }
 
+    //Recupera repúblicas deletadas quando SoftDeletes são usados
     public function getDeleted(){
         return response()->json(Republic::onlyTrashed()->get());
+    }
+
+    
+    //Estabelece o relaciomento entre um comentário e a república ao qual ele se refere
+    public function referenciaComentario($republic_id,$comment_id){
+        $comment = Comment::findOrFail($id);
+        $comment->referenciaComentario($republic_id);
+        return response()->json($comment);
     }
 
 }
