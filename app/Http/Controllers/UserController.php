@@ -7,6 +7,7 @@ use App\Republic;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
+use App\Http\Resources\User as UserResource;
 class UserController extends Controller
 {
     /*
@@ -24,7 +25,7 @@ class UserController extends Controller
 
     public function showUser($id){
         $user = User::findOrFail($id);
-        return response()->json($user);
+        return response()->json(new UserResource($user));
     }
 
     /*
@@ -32,8 +33,8 @@ class UserController extends Controller
     */
 
     public function listUser(){
-        $user = User::all();
-        return response()->json($user);
+        $user = User::paginate(2);
+        return response()->json(UserResource::collection(User::all()));
     }
 
     /*

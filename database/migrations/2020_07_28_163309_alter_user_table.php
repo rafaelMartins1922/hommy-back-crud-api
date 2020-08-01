@@ -15,9 +15,6 @@ class AlterUserTable extends Migration
     {
         Schema::table('users',function (Blueprint $table){
             $table->unsignedBigInteger("republic_id")->nullable();
-        }); 
-
-        Schema::table('users',function (Blueprint $table){
             $table->foreign("republic_id")->references('id')->on('republics')->onDelete('set null');
         }); 
     }

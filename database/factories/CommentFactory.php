@@ -9,5 +9,6 @@ $factory->define(Comment::class, function (Faker $faker) {
     return [
         'content' => $faker->asciify('********************'),
         //'evaluation' => $faker->numberBetween($min=1, $max=5),
+        
     ];
 });

@@ -102,7 +102,7 @@ class Republic extends Model{
     }
 
     /*
-       1-N Associar entidade República com Usuário (relação 'usuário cria/gerencia república')
+       1-N Associar entidade República com Usuário (relação 'usuário vive em/aluga república')
     */
     public function userLocatario(){
         return $this->hasMany("App\User");

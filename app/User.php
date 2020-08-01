@@ -88,7 +88,7 @@ class User extends Authenticatable
     }
 
     /*
-       Associar entidade República com Usuário (relação 'usuário cria/gerencia em república')
+       Associar entidade República com Usuário (relação 'usuário cria/gerencia república')
     */
     public function republics(){
         return $this->hasMany('App\Republic');
