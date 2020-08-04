@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use Auth;
 use DB;
+use App\Notifications\UserRegister;
 class PassportController extends Controller
 {
     public function register(UserRequest $request){
@@ -22,6 +23,7 @@ class PassportController extends Controller
         }
         $newuser = new User;
         $newuser->createUser($request);
+        $newuser-> notify(new UserRegister($newuser));
         $success['token'] = $newuser->createToken('MyApp')->accessToken;
         return response()->json(['succes' => $success, 'user' => $newuser],200);
     }

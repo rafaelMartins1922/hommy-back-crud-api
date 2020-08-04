@@ -26,6 +26,12 @@ Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 Route::put('list/{rep_id}/{us_id}',"RepublicController@addUser");
 Route::put('removeUser/{rep_id}/{us_id}',"RepublicController@removeUser");
+Route::get('buscarRepublicaAlugada/{us_id}',"UserController@buscaRepublicaAlugada");
+Route::get('buscarRepublicaAnunciada/{us_id}',"UserController@buscaRepublicasAnunciadas");
+Route::get('locador/{republic_id}',"RepublicController@locador");
+Route::get('locatario/{republic_id}',"RepublicController@locatario");
+
+
 
 Route::get('showUser/{id}','UserController@showUser');
 Route::get('listUser','UserController@listUser');
@@ -34,27 +40,31 @@ Route::put('updateUser/{id}','UserController@updateUser');
 Route::delete('deleteUser/{id}','UserController@deleteUser');
 
 Route::put('anunciar/{us_id}/{rep_id}',"UserController@anunciar");
-
+Route::put('favoritar/{user_id}/{republic_id}',"UserController@favoritar");//c
+Route::put('alugar/{us_id}/{rep_id}',"UserController@alugar");
+Route::put('desocupar/{us_id}',"UserController@desocupar");
+Route::get('favoritas/{user_id}',"UserController@favoritas");
+Route::put('comentarios/{rep_id}',"RepublicController@comentarios");
 //MODELS II
 //Exercícios
 //Q1
-Route::get('buscarRepublicaAlugada/{us_id}',"UserController@buscaRepublicaAlugada"); //c
-Route::get('buscarRepublicaAnunciada/{us_id}',"UserController@buscaRepublicasAnunciadas"); //c
+ //c
+ //c
 //Q2
-Route::get('locador/{republic_id}',"RepublicController@locador");//c 
+//c 
 //Q2 e Q5
-Route::get('locatario/{republic_id}',"RepublicController@locatario");//c
+//c
 //Q3
-Route::put('alugar/{us_id}/{rep_id}',"UserController@alugar");//c
+//c
 //Q4
-Route::put('desocupar/{us_id}',"UserController@desocupar");//c
+//c
 //Q6
-Route::put('favoritar/{user_id}/{republic_id}',"UserController@favoritar");//c
-Route::get('favoritas/{user_id}',"UserController@favoritas");//c
-//Q7
-Route::put('comentarios/{rep_id}',"RepublicController@comentarios");
 
-//PASSPORT & SEEDERS
+//c
+//Q7
+
+
+//Passport Controller (Passports & Seeders)
 Route::post('register','API\PassportController@register');
 Route::post('login','API\PassportController@login');
 Route::group(['middleware' => 'auth:api'],function(){
