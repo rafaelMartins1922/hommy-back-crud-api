@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "7643f429-7236-4416-aa5f-c08b96323bb6",
+		"name": "Middlewares & Storage User Operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Marcelo",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "email1@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "senha123",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "123456789",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "marcelob4@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "senha123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWU0ODY1NWQyMDlkNjkxZGFjYWU0NzhjODJmNzNiYWUwM2JmYjUwYWZlYWM2YzJjODdjMjcyYWE3ZGFmYWE1Y2Y1NDM1ZjRjY2I2YjQ5ODUiLCJpYXQiOjE1OTYwNjE5ODYsIm5iZiI6MTU5NjA2MTk4NiwiZXhwIjoxNjI3NTk3OTg2LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.hmXLHqkxBD89YXuXhPTzCsgPIWYMCYVa0yf855VWNYGE15r7cMCLWiZLq1gVHaTxIR6raahqEaQ-bdkXvDTeUKMTNvjG73T8ZTArFyEgDTRLM5HOWa1blIQ_JGYmRop54Wv5-WZTAfTmwzj4MT9DcX6zHxNT14-N5unIswgOPjU3ie2xVPMJsqpbtFRGZxBHhQdVMup4C5gi2U91ycP2-nwqiBbgWU_gK_52pYXI_SCmNQdUyUL8gPeWDIT_sjPRh2yF5Ik1xInCuGwLbiBdFuNEQnV--M87QyGF3aBIIskLw1GBYKaml3ALpaKhonlApcHWpUzDqCvXRNY-Yr85KW_hf-vb5uaw4abNkH6gXlQaniBFqmAh1dWpYdzRRS-IcTx8IhU9MlQ1XimraFvd_VDkGwTqr0fg2-1ZFxNbhMlynnU09UhIJp69yS0JG71B-dHAODJ60HLxHXkDGiQKBnIlsTyjEI7DHXlVRdF7BbdGAhD_OEckPWVSKf_5IoRO4yltSE29j4xds46edDy8UdwQrP_sc8QYJDE8F-ZjqqvZhKYhgMdrbJ3NRog5W0budfy-dK8Xs33C4JrGYlB6ry51sSq8h_BbVH_oMeOmAZkiA-7lQyX8XEAdca6wLcxxyCmYYR8AVTn1R396aEWQCLRO6JRqMIjnRpbHJ0fHrv0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "marcelob4@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "senha123",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODk3ZmZhYjA3MTEwYWFhMzU4OTlkYzk3ZWRmYWIwZGZlMGJmOTY2NDJkNDAzNDBiNTc4OTQxNTIzYmJkOWJhYzE1ZjY5ZWM2NTcwYzcwODIiLCJpYXQiOjE1OTYwNjIwNjYsIm5iZiI6MTU5NjA2MjA2NiwiZXhwIjoxNjI3NTk4MDY2LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.KKuR5M4KrW_jbktswSXjLUCg8sYqUG1UedI1FMH7XcnFLy6yB6r-uaRtWEneJQ4SWOTQHqWY0sZwDYq70k1JoT83ApHJne5S6xVpaDJc-XzzxETxwOrOqS9l3KyTxbao4ho0l4gF8loP5tjEBdS83pKP_NZeSE-CorQyeYgsquogQkt4W5TrkttyQgeqQn-nbd51g4oRzhynjdikadK8WY6GjLKhNQy8rG-RmqYK33wIW7WE7EveNVf9p4BajZal2AKDwKM1AjcByGl3vEOp9ulrcqa-4ukyZQFJnFfRxNSSt4DUDKyyHQJ4iGnT3zuYeh2MF8i4P2hKqbMpn0AgKG9lX4F-mcx1pab3XABndo4Nkkmo3D5cdLeVexXMiHHOiAbWjwtYHBk38sL3vK6xaiD7P042L7idTgS1vGXfgyA46QPJw5hSh28NRo1DKFzV-E5FFofybwbycwTtaBH5kCv8gwUmpqSR6Hu0dDFKgqKCUiR8uKhNVwdrU0-PvKbhy-xqAoTTs7yxuWOxKmN-sXw6ePmhOMC_reUrw4JARghoFNKzU5OKVyGNYO7GYtU5gYk2IgbVMWZZLxK_klnsWAKyuzw0XBTLDuys4ldNCN9d6TSY8aAFqyYEMNeLKJVHYHee9V9PdhSrS_sAKBznQEHtTC64bVIvPbP_q9BR6AU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/getDetails",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"getDetails"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "33947606-610e-4299-85eb-9e858e9d7a45",
-		"name": "Republic Operations",
+		"_postman_id": "05f46fd2-d250-421e-9d4f-8db3ae44f20a",
+		"name": "Middlewares & Storage Republic Operations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -9,18 +9,19 @@
 			"name": "Create Republic",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjg3ZjFhNTQ1MWVmMTJjZDZjNDE2ODBkNDNmZTVkOThmNmM1MmNhNDkzYjU2YTRhZGRlNTI1MDYxZDhiZmUwODQ3NTUxOTc4Mjk1MDU2MjciLCJpYXQiOjE1OTY2MDY1OTQsIm5iZiI6MTU5NjYwNjU5NCwiZXhwIjoxNjI4MTQyNTk0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.uOoQW099cKoYtCVIAk3q9nPVqg4q_SvFvHxPWt0MWKoXhjVc5qifVi05x6ATtxFrYUbnrr4xNAVgQXKvVBLf2tNHdhRc9FeCvk5WJMkg_Z05av1iNCKVyLrK-uEwLHawJ3ewlD5MWIeJAjOn3mLT6w5W7lK5WNR8pOS1vNFQf_hL-zfPnzv1_y-iIpjt7zRPMOpkWi0eyJslFtHg7pp9b1eda7QbslJw_3cT0DDEeqL5rD9V4fB8sikMqPXuZEoPIfcMKSk6i9kHXyMsJxnzOnH_ggaOvBoVpDBh-NxHg26x_vA9wh4OkTiDVkFqJbp7FdvD775-m9EdAGf-jlig-HIkGk9TNTk-O8-xfhK2Zml4aCy_de4D9xM63wQuQgrh9v9vdIioeWnqZjcEotwntunZLbH9fjJfO3NF2Ax0j0NRD6vg6ciCpDUoqa4vs3CKOx3BEL9ZXTCu4WBbOVFy7GuWUvEvschcvtk--ke3iAZbU7ejMyHIO_wm2Jwd154qcYJpIwwZmVl_CKU7ojoXbJ0AeKIO-9Xm5yKPfh23kLMJecgT2eulCIIObaL7wj48bXc2N1nyQcfAyybeXrS-irJVAdk1tTjxfc6c1Glak-6LIpLjN_MyRqvIQEGusNTHVyTt89O81j21zIjUrX88fuQF_GY-RBuQC2PVTpJBgNw",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "name",
-							"value": "República 1",
-							"type": "text"
-						},
-						{
-							"key": "city",
-							"value": "Rio de Janeiro",
+							"value": "República Santa Helena",
 							"type": "text"
 						},
 						{
@@ -30,23 +31,33 @@
 						},
 						{
 							"key": "street",
-							"value": "Av.Brasilfs",
+							"value": "Av. Samara Ribeiro",
 							"type": "text"
 						},
 						{
 							"key": "number",
-							"value": "2688",
+							"value": "21",
 							"type": "text"
 						},
 						{
 							"key": "complement",
-							"value": "fdgifdhguownd dfuighafu",
+							"value": "2o andar",
 							"type": "text"
 						},
 						{
 							"key": "price",
 							"value": "550",
 							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Rio de Janeiro",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/Me IV/Downloads/WhatsApp Image 2020-01-04 at 22.41.45(4).jpeg"
 						}
 					]
 				},
@@ -70,7 +81,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/api/showRepublic/5",
+					"raw": "localhost:8000/api/showRepublic/2",
 					"host": [
 						"localhost"
 					],
@@ -78,7 +89,7 @@
 					"path": [
 						"api",
 						"showRepublic",
-						"5"
+						"2"
 					]
 				}
 			},
@@ -86,9 +97,16 @@
 		},
 		{
 			"name": "List Republic",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
 					"raw": "localhost:8000/api/listRepublic",
 					"host": [
@@ -109,7 +127,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8000/api/deleteRepublic/1",
+					"raw": "localhost:8000/api/deleteRepublic/30",
 					"host": [
 						"localhost"
 					],
@@ -117,7 +135,7 @@
 					"path": [
 						"api",
 						"deleteRepublic",
-						"1"
+						"30"
 					]
 				}
 			},
@@ -133,7 +151,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "la republica",
+							"value": "la republica3333",
 							"type": "text"
 						},
 						{
@@ -158,48 +176,6 @@
 						"api",
 						"updateRepublic",
 						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add User Relation",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "localhost:8000/api/addUser/2/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"addUser",
-						"2",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Remover User Relation",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "localhost:8000/api/removeUser/2/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"removeUser",
-						"2",
-						"1"
 					]
 				}
 			},
