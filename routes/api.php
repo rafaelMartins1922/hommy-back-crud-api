@@ -21,9 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('showRepublic/{id}','RepublicController@showRepublic');
 Route::get('listRepublic','RepublicController@listRepublic');
-Route::post('createRepublic','RepublicController@createRepublic');
-Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
-Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
+
 Route::put('list/{rep_id}/{us_id}',"RepublicController@addUser");
 Route::put('removeUser/{rep_id}/{us_id}',"RepublicController@removeUser");
 Route::get('buscarRepublicaAlugada/{us_id}',"UserController@buscaRepublicaAlugada");
@@ -45,24 +43,6 @@ Route::put('alugar/{us_id}/{rep_id}',"UserController@alugar");
 Route::put('desocupar/{us_id}',"UserController@desocupar");
 Route::get('favoritas/{user_id}',"UserController@favoritas");
 Route::put('comentarios/{rep_id}',"RepublicController@comentarios");
-//MODELS II
-//Exercícios
-//Q1
- //c
- //c
-//Q2
-//c 
-//Q2 e Q5
-//c
-//Q3
-//c
-//Q4
-//c
-//Q6
-
-//c
-//Q7
-
 
 //Passport Controller (Passports & Seeders)
 Route::post('register','API\PassportController@register');
@@ -70,6 +50,13 @@ Route::post('login','API\PassportController@login');
 Route::group(['middleware' => 'auth:api'],function(){
 	Route::get('logout','API\PassportController@logout');
 	Route::post('getDetails','API\PassportController@getDetails');
+	Route::post('createRepublic','RepublicController@createRepublic');
+});
+
+Route::group(['middleware' => ['auth:api','umr']],function(){
+	
+	Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
+	Route::delete('deleteRepublic/{id}','RepublicController@deleteRepublic');
 });
 
 //ELOQUENT I

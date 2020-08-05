@@ -37,6 +37,7 @@ class CreateRepublicsTable extends Migration
             $table->integer("water_heating")->nullable();  //1 for no heating, 2 for gas and 3 for electric
             $table->boolean("pool")->nullable();
             $table->unsignedBigInteger("user_id")->nullable();
+            $table->string('photo')->nullable();
             
         });
         /* 

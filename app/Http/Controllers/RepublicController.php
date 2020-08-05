@@ -10,7 +10,8 @@ use App\Comment;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RepublicRequest;
 use App\Http\Resources\Republic as RepublicResource;
-
+use Auth;
+use Illuminate\Support\Facades\Storage;
 class RepublicController extends Controller
 
 
@@ -19,8 +20,10 @@ class RepublicController extends Controller
         Criar república
     */
     public function createRepublic(RepublicRequest $request){
+        $user = Auth::user();
         $republic = new Republic;
         $republic->createRepublic($request);
+        $user->republics()->save($republic);
         return response()->json($republic);
     }
 
@@ -28,7 +31,6 @@ class RepublicController extends Controller
         buscar república por id
     */
     public function showRepublic($id){
-        
         $republic = Republic::findOrFail($id);
         $s = new RepublicResource($republic);
         return response()->json($s);
@@ -48,11 +50,12 @@ class RepublicController extends Controller
          }
          
          //EXERCICIO ELOQUENT II SLIDE 25
-         $queryRepublic->has('comments','>=',2);
-         $paginator = $queryRepublic->paginate(2);                      
-         $republic = RepublicResource::collection($paginator);              
-         $last = $paginator->lastPage();
-         return response()->json([$paginator,$last]);
+         //$queryRepublic->has('comments','>=',2);
+         //$paginator = $queryRepublic->paginate(2);                      
+         //$republic = RepublicResource::collection($paginator);              
+         //$last = $paginator->lastPage();
+         $search = $queryRepublic->get();
+         return response()->json($search);
     }
 
     /*
@@ -69,6 +72,11 @@ class RepublicController extends Controller
         Excluir república
     */
     public function deleteRepublic($id){
+        $republic = Republic::findOrFail($id);
+        if($republic->photo){
+            
+            Storage::delete($republic->photo);
+        }
         Republic::destroy($id);
         return response()->json(["República deletada."]);
     }

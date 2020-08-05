@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Http\Requests\RepublicRequest;
+use Illuminate\Support\Facades\Storage;
 
 Use Illuminate\Database\Eloquent\SoftDeletes;
 class Republic extends Model{
@@ -33,6 +34,23 @@ class Republic extends Model{
         $this->air_conditioner = $request->air_conditioner;
         $this->water_heating = $request->water_heating;
         $this->pool = $request->pool;
+        if(!Storage::exists('localPhotos/')){
+            Storage::makeDirectory('localPhotos/',0775,true);
+        }
+        if($request->file('photo')){
+            $file= $request->file('photo');
+          $filename=rand().'.'.$file->getClientOriginalExtension();
+          $path=$file->storeAs("localPhotos/",$filename);
+          $this->photo=$path;
+        }
+          
+        //   $image = base64_decode($request->photo);
+        //   $filename = uniqid();
+        //   $path = 'localPhotos/'.$filename;
+        //   file_put_contents(storage_path('app/'.$path),$image);
+        //   $this->photo=$path;
+        $this->save();
+        return response()->json($this);
         $this->save();
     }
 

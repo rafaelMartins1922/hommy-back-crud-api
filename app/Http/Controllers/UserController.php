@@ -14,6 +14,7 @@ class UserController extends Controller
         Criar usuário
     */
     public function createUser(UserRequest $request){
+        
         $user = new User;
         $user->createUser($request);
         return response()->json($user);
@@ -33,8 +34,9 @@ class UserController extends Controller
     */
 
     public function listUser(){
-        $user = User::paginate(2);
-        return response()->json(UserResource::collection(User::all()));
+        //$user = User::paginate(2); --exercicio eloquent2
+        //return response()->json(UserResource::collection(User::all())); --exercicio eloquent2
+        return response()->json(User::all());
     }
 
     /*

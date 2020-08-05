@@ -42,7 +42,7 @@ class UserRegister extends Notification
     {
         return (new MailMessage)
                     ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->action('Notification Action', url('http//:www.google.com'))
                     ->line('Thank you for using our application!');
     }
 
